@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Weather Api</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash">Splash</string>
+    <string name="moderate_rain">moderate rain</string>
+    <string name="_298_48">298.48</string>
+    <string name="_298_74">298.74</string>
+    <string name="feels_like">Feels_like:</string>
+    <string name="temp">Temp:</string>
+    <string name="description">Description:</string>
+</resources>

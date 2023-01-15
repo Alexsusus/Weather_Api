@@ -15,6 +15,7 @@ class StartFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var adapter: StartAdapter
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,7 +27,8 @@ class StartFragment : Fragment() {
         recyclerView.adapter = adapter
         viewModel.getWeather()
         viewModel.myWeatherList.observe(viewLifecycleOwner,{list->
-            list.body()?.let { adapter.setList(it) }
+            list.body()?.let { adapter.setList(it.list)
+            }
         })
         return view
     }

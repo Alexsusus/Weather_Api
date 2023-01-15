@@ -5,7 +5,7 @@ import com.example.weatherapi.model.WeatherClass
 import retrofit2.Response
 
 class Repository {
-    suspend fun getWeatRep(): Response<WeatherClass>{
+    suspend fun getWeatRep(): Response<WeatherClass> {
         return RetrofitInstance.api.getWeather()
     }
 }

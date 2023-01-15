@@ -1,5 +1,10 @@
 package com.example.weatherapi.model
 
-import com.example.weatherapi.model.items.AllItems
-
-class WeatherClass : ArrayList<AllItems>()
+data class WeatherClass(
+    val cod: Int,
+    val id: Int,
+    val main: MainX,
+    val name: String,
+    val timezone: Int,
+    val weather: List<Weather>
+)

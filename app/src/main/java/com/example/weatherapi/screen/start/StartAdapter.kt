@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
-import com.example.weatherapi.model.items.AllItems
+import com.example.weatherapi.model.WeatherClass
 import kotlinx.android.synthetic.main.item_weather_layout.view.*
 
 class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
 
-    var listStart = emptyList<AllItems>()
+    //var listStart = emptyList<AllItems>()
+    var listStart = emptyList<WeatherClass>()
 
     class StartViewHolder(view: View):RecyclerView.ViewHolder(view)
 
@@ -22,9 +23,14 @@ class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: StartViewHolder, position: Int) {
-        holder.itemView.description.text = listStart[position].main.description
+        /*holder.itemView.description.text = listStart[position].main.description
+        holder.itemView.temp.text = listStart[position].main.temp.toString()
+        holder.itemView.feels_like.text = listStart[position].main.feels_like.toString()*/
+
+        holder.itemView.description.text = listStart[position].weather[0].description
         holder.itemView.temp.text = listStart[position].main.temp.toString()
         holder.itemView.feels_like.text = listStart[position].main.feels_like.toString()
+
     }
 
     override fun getItemCount(): Int {
@@ -32,8 +38,9 @@ class StartAdapter:RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(list: List<AllItems>){
-        listStart = list
+    //fun setList(list: List<AllItems>){
+    fun setList(list: WeatherClass){
+        listStart = listOf(list)
         notifyDataSetChanged()
     }
 }

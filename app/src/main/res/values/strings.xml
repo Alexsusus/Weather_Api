@@ -9,4 +9,7 @@
     <string name="date">Date: </string>
     <string name="temp">Temp:</string>
     <string name="description">Description:</string>
+    <string name="city">Ваш город</string>
+    <string name="loc">Геолокация</string>
+    <string name="setCity">Ввести город</string>
 </resources>

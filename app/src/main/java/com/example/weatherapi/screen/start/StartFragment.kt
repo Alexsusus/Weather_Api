@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
@@ -26,16 +27,14 @@ class StartFragment : Fragment() {
         recyclerView = view.rv_start
         adapter = StartAdapter()
         recyclerView.adapter = adapter
-
-        //"forecast?q=rome&appid=a2e01fc0156c6b14f833c14dc85e2a1e&units=metric&lang=ru"
-
          viewModel.getWeather("kiev")
 
-        viewModel.myWeatherList.observe(viewLifecycleOwner, { list ->
+        viewModel.myWeatherList.observe(viewLifecycleOwner) { list ->
             list.body()?.let {
                 adapter.setList(it)
+               view.city_name.text = it.city.name
             }
-        })
+        }
         return view
     }
 

@@ -6,10 +6,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".screen.start.StartFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/city"
+        android:textSize="30dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_start"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="60dp"
+        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_above="@+id/layoutButtons"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Название города на английском"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+        </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutButtons"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/loc"
+            android:layout_marginHorizontal="5dp"/>
+
+        <Button
+            android:id="@+id/setCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/setCity"
+            android:layout_marginHorizontal="5dp"/>
+    </LinearLayout>
+
+    </RelativeLayout>
 </FrameLayout>

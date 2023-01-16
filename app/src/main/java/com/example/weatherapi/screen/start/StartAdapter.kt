@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
 import com.example.weatherapi.model.ForecastFiveDays
 import com.example.weatherapi.model.OLDForecastFiveDays
+import kotlinx.android.synthetic.main.fragment_start.view.*
 import kotlinx.android.synthetic.main.item_weather_layout.view.*
 
 class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
@@ -32,21 +33,13 @@ class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
 
     override fun onBindViewHolder(holder: StartViewHolder, position: Int) {
 
-        /*holder.itemView.description.text = listStart[position].weather[0].description
-        holder.itemView.temp.text = listStart[position].main.temp.toString()
-        holder.itemView.feels_like.text = listStart[position].main.feels_like.toString()*/
-
-        /* holder.itemView.description.text = listStart[0].list[0].weather[0].description
-         holder.itemView.temp.text = listStart[0].list[0].main.temp.toString()
-         holder.itemView.feels_like.text = listStart[0].list[0].main.feels_like.toString()*/
-
-
-
-        /*if (listStart.isNotEmpty()) {
-            holder.itemView.description.text = listStart.get(position).list[0].weather[0].description
-            holder.itemView.temp.text = listStart.get(position).list[0].main.temp.toString()
-            holder.itemView.date.text = listStart.get(position).list[0].dt_txt
-        }*/
+        if (listStart.isNotEmpty()) {
+            holder.itemView.description.text =
+                listStart.get(0).list[position].weather[0].description
+            holder.itemView.temp.text =
+                listStart[0].list[position].main.temp.toInt().toString().plus("°C")
+            holder.itemView.date.text = listStart[0].list[position].dt_txt
+        }
 
 
     }
@@ -59,7 +52,6 @@ class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
     //fun setList(list: WeatherClass){
     fun setList(list: OLDForecastFiveDays) {
         listStart = listOf(list)
-        System.err.println(list.city.name)
         notifyDataSetChanged()
     }
 }

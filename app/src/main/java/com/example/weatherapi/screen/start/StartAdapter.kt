@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
 import com.example.weatherapi.model.ForecastFiveDays
+import com.example.weatherapi.model.OLDForecastFiveDays
 import kotlinx.android.synthetic.main.item_weather_layout.view.*
 
 class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
 
 
     //var listStart = emptyList<WeatherClass>()
-    var listStart = emptyList<ForecastFiveDays>()//emptyList<OLDForecastFiveDays>()
+    var listStart = emptyList<OLDForecastFiveDays>()//emptyList<OLDForecastFiveDays>()
     var text1 = "1"
     var text2 = "2"
     var text3 = "3"
@@ -41,16 +42,12 @@ class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
 
 
 
-        if (listStart.isNotEmpty()) {
-            holder.itemView.description.text = listStart.get(position).weather[0].description
-            holder.itemView.temp.text = listStart.get(position).main.temp.toString()
-            holder.itemView.date.text = listStart.get(position).dt_txt
-        }
-        /*else {
-               holder.itemView.description.text = text1
-               holder.itemView.temp.text = text2
-               holder.itemView.feels_like.text = text3
-           }*/
+        /*if (listStart.isNotEmpty()) {
+            holder.itemView.description.text = listStart.get(position).list[0].weather[0].description
+            holder.itemView.temp.text = listStart.get(position).list[0].main.temp.toString()
+            holder.itemView.date.text = listStart.get(position).list[0].dt_txt
+        }*/
+
 
     }
 
@@ -60,8 +57,9 @@ class StartAdapter : RecyclerView.Adapter<StartAdapter.StartViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     //fun setList(list: WeatherClass){
-    fun setList(list: List<ForecastFiveDays>) {
-        listStart = list
+    fun setList(list: OLDForecastFiveDays) {
+        listStart = listOf(list)
+        System.err.println(list.city.name)
         notifyDataSetChanged()
     }
 }

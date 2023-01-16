@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
 import kotlinx.android.synthetic.main.fragment_start.view.*
 
+
 class StartFragment : Fragment() {
 
     lateinit var recyclerView: RecyclerView
@@ -25,9 +26,14 @@ class StartFragment : Fragment() {
         recyclerView = view.rv_start
         adapter = StartAdapter()
         recyclerView.adapter = adapter
-        viewModel.getWeather()
-        viewModel.myWeatherList.observe(viewLifecycleOwner,{list->
-            list.body()?.let { adapter.setList(it.list)
+
+        //"forecast?q=rome&appid=a2e01fc0156c6b14f833c14dc85e2a1e&units=metric&lang=ru"
+
+         viewModel.getWeather("kiev")
+
+        viewModel.myWeatherList.observe(viewLifecycleOwner, { list ->
+            list.body()?.let {
+                adapter.setList(it)
             }
         })
         return view

@@ -1,15 +1,52 @@
 package com.example.weatherapi.data.api
 
+import com.example.weatherapi.data.repository.Repository
 import com.example.weatherapi.model.ForecastFiveDays
 import com.example.weatherapi.model.OLDForecastFiveDays
+import kotlinx.coroutines.Deferred
 import retrofit2.Response
-import retrofit2.http.GET
+import retrofit2.http.*
 
+const val key: String = "a2e01fc0156c6b14f833c14dc85e2a1e"
+
+const val geet: String = "forecast?q=rome&appid=$key&units=metric&lang=ru"
+
+const val st: String = "rome"
+
+val dsa= Repository()
+
+const val url = "forecast?q=rome"
 interface ApiService {
 
-   // @GET("weather?q=Kiev&appid=a2e01fc0156c6b14f833c14dc85e2a1e&units=metric&lang=ru") //one day
-    @GET("forecast?lat=44.34&lon=10.99&appid=a2e01fc0156c6b14f833c14dc85e2a1e")
 
-    //suspend fun getWeather():Response<WeatherClass>
-    suspend fun getWeather():Response<OLDForecastFiveDays>
+    // @GET("weather?q=Kiev&appid=a2e01fc0156c6b14f833c14dc85e2a1e&units=metric&lang=ru") //one day
+
+ //suspend fun getWeather():Response<WeatherClass>
+
+
+
+    //@GET("forecast?q=rome&appid=$key&units=metric&lang=ru")
+
+    //@GET("forecast?q=$st&appid=a2e01fc0156c6b14f833c14dc85e2a1e&units=metric&lang=ru")
+    @GET("forecast")
+    suspend fun getWeather(
+        @Query("q") location:String,
+        @Query("appid") key:String,
+        @Query("units") metr: String,
+        @Query("lang") lang: String
+    ):Response<OLDForecastFiveDays>
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,7 +36,8 @@
                 android:layout_height="match_parent"
                 android:hint="Название города на английском"
                 android:layout_gravity="center"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:background="@color/bgcEditTextGrey"/>
         </LinearLayout>
 
     <LinearLayout

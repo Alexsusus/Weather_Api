@@ -9,13 +9,6 @@ import retrofit2.http.*
 
 const val key: String = "a2e01fc0156c6b14f833c14dc85e2a1e"
 
-const val geet: String = "forecast?q=rome&appid=$key&units=metric&lang=ru"
-
-const val st: String = "rome"
-
-val dsa= Repository()
-
-const val url = "forecast?q=rome"
 interface ApiService {
 
 

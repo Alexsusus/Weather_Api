@@ -13,8 +13,6 @@ class Repository {
     private val language = "ru"
 
     suspend fun getWeatRep(location: String): Response<OLDForecastFiveDays> {
-        //suspend fun getWeatRep(location: String): Response<OLDForecastFiveDays> {
         return RetrofitInstance.api.getWeather(location, key, mertic, language)
-        // return RetrofitInstance.api.getWeather(location)
     }
 }

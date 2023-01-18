@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
     <TextView
         android:id="@+id/city_name"
@@ -21,11 +22,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_start"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginTop="60dp"
+        android:layout_above="@+id/layoutBottomPart"
         />
         <LinearLayout
+            android:id="@+id/layoutBottomPart"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_above="@+id/layoutButtons"
@@ -43,7 +46,7 @@
     <LinearLayout
         android:id="@+id/layoutButtons"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true">
 
         <Button

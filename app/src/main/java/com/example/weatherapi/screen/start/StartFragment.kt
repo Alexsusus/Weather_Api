@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,6 @@ class StartFragment : Fragment() {
             }
         }
 
-        //Toast.makeText(context,"Ошибка в написании города",Toast.LENGTH_SHORT).show()
         findLocation()
         return view
     }
@@ -95,7 +95,6 @@ class StartFragment : Fragment() {
     private fun getNameCityFromCord(lat: Double, lng: Double): String? {
         val geocoder = context?.let { Geocoder(it) }
         val list = geocoder?.getFromLocation(lat, lng, 1)
-        System.err.println(list?.get(0)?.locality)
         return list?.get(0)?.locality
     }
 

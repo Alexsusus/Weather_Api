@@ -1,7 +1,7 @@
 package com.example.weatherapi.data.api
 
 
-import com.example.weatherapi.model.OLDForecastFiveDays
+import com.example.weatherapi.model.AllItemsForecastFiveDays
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -13,7 +13,7 @@ interface ApiService {
         @Query("appid") key:String,
         @Query("units") metr: String,
         @Query("lang") lang: String
-    ):Response<OLDForecastFiveDays>
+    ):Response<AllItemsForecastFiveDays>
 
 }
 

@@ -1,7 +1,7 @@
 package com.example.weatherapi.data.repository
 
 import com.example.weatherapi.data.api.RetrofitInstance
-import com.example.weatherapi.model.OLDForecastFiveDays
+import com.example.weatherapi.model.AllItemsForecastFiveDays
 import retrofit2.Response
 
 class Repository {
@@ -12,7 +12,7 @@ class Repository {
 
     private val language = "ru"
 
-    suspend fun getWeatRep(location: String): Response<OLDForecastFiveDays> {
+    suspend fun getWeatRep(location: String): Response<AllItemsForecastFiveDays> {
         return RetrofitInstance.api.getWeather(location, key, mertic, language)
     }
 }

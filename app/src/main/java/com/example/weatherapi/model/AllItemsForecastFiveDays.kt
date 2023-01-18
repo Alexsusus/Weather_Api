@@ -1,6 +1,6 @@
 package com.example.weatherapi.model
 
-data class OLDForecastFiveDays(
+data class AllItemsForecastFiveDays(
     val city: City,
     val cnt: Int,
     val cod: String,

@@ -18,8 +18,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapi.R
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import kotlinx.android.synthetic.main.fragment_start.view.*
 
@@ -82,7 +82,7 @@ class StartFragment : Fragment() {
 
         val ct = CancellationTokenSource()
         fusedLocationClient
-            .getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, ct.token)
+            .getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, ct.token)
             .addOnCompleteListener {
                 getNameCityFromCord(it.result.latitude, it.result.longitude)
             }

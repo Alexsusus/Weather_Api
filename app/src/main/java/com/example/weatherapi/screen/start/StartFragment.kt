@@ -3,9 +3,10 @@ package com.example.weatherapi.screen.start
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -83,19 +84,27 @@ class StartFragment : Fragment() {
         fusedLocationClient
             .getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, ct.token)
             .addOnCompleteListener {
-                var city = getNameCityFromCord(it.result.latitude, it.result.longitude)
-                if (city != null) {
-                    showCity(city)
-                } else {
-                    Toast.makeText(context, "Ошибка геолокации", Toast.LENGTH_SHORT).show()
-                }
+                getNameCityFromCord(it.result.latitude, it.result.longitude)
             }
     }
 
-    private fun getNameCityFromCord(lat: Double, lng: Double): String? {
+    private fun getNameCityFromCord(lat: Double, lng: Double){
         val geocoder = context?.let { Geocoder(it) }
-        val list = geocoder?.getFromLocation(lat, lng, 1)
-        return list?.get(0)?.locality
+
+        if (Build.VERSION.SDK_INT >= 33) {
+            geocoder?.getFromLocation(lat, lng, 1, object : Geocoder.GeocodeListener {
+                override fun onGeocode(addresses: MutableList<Address>) {
+                    showCity(addresses[0].locality)
+                }
+                override fun onError(errorMessage: String?) {
+                    Toast.makeText(context, "Ошибка геолокации", Toast.LENGTH_SHORT).show()
+                    super.onError(errorMessage)
+                }
+            })
+        }
+        else {
+            showCity(geocoder?.getFromLocation(lat, lng, 1)?.get(0)?.locality.toString())
+        }
     }
 
 
